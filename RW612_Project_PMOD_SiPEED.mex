@@ -44,15 +44,53 @@
                         <data>true</data>
                      </feature>
                   </dependency>
+                  <dependency resourceType="SWComponent" resourceId="platform.drivers.lpc_gpio" description="Pins initialization requires the LPC_GPIO Driver in the project." problem_level="2" source="Pins:BOARD_InitPins">
+                     <feature name="enabled" evaluation="equal" configuration="cm33">
+                        <data>true</data>
+                     </feature>
+                  </dependency>
                </dependencies>
                <pins>
-                  <pin peripheral="GPIO" signal="PIO1, 17" pin_num="D14" pin_signal="GPIO_49"/>
-                  <pin peripheral="GPIO" signal="PIO1, 15" pin_num="E13" pin_signal="GPIO_47"/>
-                  <pin peripheral="GPIO" signal="PIO1, 16" pin_num="D13" pin_signal="GPIO_48"/>
-                  <pin peripheral="GPIO" signal="PIO1, 12" pin_num="J11" pin_signal="GPIO_44"/>
-                  <pin peripheral="GPIO" signal="PIO0, 18" pin_num="K3" pin_signal="GPIO_18"/>
-                  <pin peripheral="GPIO" signal="PIO0, 17" pin_num="H2" pin_signal="GPIO_17"/>
-                  <pin peripheral="GPIO" signal="PIO0, 16" pin_num="J3" pin_signal="GPIO_16"/>
+                  <pin peripheral="GPIO" signal="PIO1, 17" pin_num="D14" pin_signal="GPIO_49">
+                     <pin_features>
+                        <pin_feature name="direction" value="OUTPUT"/>
+                     </pin_features>
+                  </pin>
+                  <pin peripheral="GPIO" signal="PIO1, 15" pin_num="E13" pin_signal="GPIO_47">
+                     <pin_features>
+                        <pin_feature name="direction" value="OUTPUT"/>
+                     </pin_features>
+                  </pin>
+                  <pin peripheral="GPIO" signal="PIO1, 16" pin_num="D13" pin_signal="GPIO_48">
+                     <pin_features>
+                        <pin_feature name="direction" value="OUTPUT"/>
+                     </pin_features>
+                  </pin>
+                  <pin peripheral="GPIO" signal="PIO1, 12" pin_num="J11" pin_signal="GPIO_44">
+                     <pin_features>
+                        <pin_feature name="direction" value="OUTPUT"/>
+                     </pin_features>
+                  </pin>
+                  <pin peripheral="GPIO" signal="PIO0, 18" pin_num="K3" pin_signal="GPIO_18">
+                     <pin_features>
+                        <pin_feature name="direction" value="OUTPUT"/>
+                     </pin_features>
+                  </pin>
+                  <pin peripheral="GPIO" signal="PIO0, 17" pin_num="H2" pin_signal="GPIO_17">
+                     <pin_features>
+                        <pin_feature name="direction" value="OUTPUT"/>
+                     </pin_features>
+                  </pin>
+                  <pin peripheral="GPIO" signal="PIO0, 16" pin_num="J3" pin_signal="GPIO_16">
+                     <pin_features>
+                        <pin_feature name="direction" value="OUTPUT"/>
+                     </pin_features>
+                  </pin>
+                  <pin peripheral="GPIO" signal="PIO1, 14" pin_num="F12" pin_signal="GPIO_46">
+                     <pin_features>
+                        <pin_feature name="direction" value="OUTPUT"/>
+                     </pin_features>
+                  </pin>
                </pins>
             </function>
          </functions_list>

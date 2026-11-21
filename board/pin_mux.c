@@ -17,6 +17,7 @@ processor_version: 25.06.10
 /* clang-format on */
 
 #include "fsl_common.h"
+#include "fsl_gpio.h"
 #include "fsl_io_mux.h"
 #include "pin_mux.h"
 
@@ -37,13 +38,14 @@ void BOARD_InitBootPins(void)
 BOARD_InitPins:
 - options: {callFromInitBoot: 'true', coreID: cm33, enableClock: 'true'}
 - pin_list:
-  - {pin_num: D14, peripheral: GPIO, signal: 'PIO1, 17', pin_signal: GPIO_49}
-  - {pin_num: E13, peripheral: GPIO, signal: 'PIO1, 15', pin_signal: GPIO_47}
-  - {pin_num: D13, peripheral: GPIO, signal: 'PIO1, 16', pin_signal: GPIO_48}
-  - {pin_num: J11, peripheral: GPIO, signal: 'PIO1, 12', pin_signal: GPIO_44}
-  - {pin_num: K3, peripheral: GPIO, signal: 'PIO0, 18', pin_signal: GPIO_18}
-  - {pin_num: H2, peripheral: GPIO, signal: 'PIO0, 17', pin_signal: GPIO_17}
-  - {pin_num: J3, peripheral: GPIO, signal: 'PIO0, 16', pin_signal: GPIO_16}
+  - {pin_num: D14, peripheral: GPIO, signal: 'PIO1, 17', pin_signal: GPIO_49, direction: OUTPUT}
+  - {pin_num: E13, peripheral: GPIO, signal: 'PIO1, 15', pin_signal: GPIO_47, direction: OUTPUT}
+  - {pin_num: D13, peripheral: GPIO, signal: 'PIO1, 16', pin_signal: GPIO_48, direction: OUTPUT}
+  - {pin_num: J11, peripheral: GPIO, signal: 'PIO1, 12', pin_signal: GPIO_44, direction: OUTPUT}
+  - {pin_num: K3, peripheral: GPIO, signal: 'PIO0, 18', pin_signal: GPIO_18, direction: OUTPUT}
+  - {pin_num: H2, peripheral: GPIO, signal: 'PIO0, 17', pin_signal: GPIO_17, direction: OUTPUT}
+  - {pin_num: J3, peripheral: GPIO, signal: 'PIO0, 16', pin_signal: GPIO_16, direction: OUTPUT}
+  - {pin_num: F12, peripheral: GPIO, signal: 'PIO1, 14', pin_signal: GPIO_46, direction: OUTPUT}
  * BE CAREFUL MODIFYING THIS COMMENT - IT IS YAML SETTINGS FOR TOOLS ***********
  */
 /* clang-format on */
@@ -57,6 +59,66 @@ BOARD_InitPins:
 /* Function assigned for the Cortex-M33 */
 void BOARD_InitPins(void)
 {
+    /* Enables the clock for the GPIO0 module */
+    GPIO_PortInit(GPIO, 0);
+    /* Enables the clock for the GPIO1 module */
+    GPIO_PortInit(GPIO, 1);
+
+    gpio_pin_config_t gpio0_pinJ3_config = {
+        .pinDirection = kGPIO_DigitalOutput,
+        .outputLogic = 0U
+    };
+    /* Initialize GPIO functionality on pin PIO0_16 (pin J3)  */
+    GPIO_PinInit(GPIO, 0U, 16U, &gpio0_pinJ3_config);
+
+    gpio_pin_config_t gpio0_pinH2_config = {
+        .pinDirection = kGPIO_DigitalOutput,
+        .outputLogic = 0U
+    };
+    /* Initialize GPIO functionality on pin PIO0_17 (pin H2)  */
+    GPIO_PinInit(GPIO, 0U, 17U, &gpio0_pinH2_config);
+
+    gpio_pin_config_t gpio0_pinK3_config = {
+        .pinDirection = kGPIO_DigitalOutput,
+        .outputLogic = 0U
+    };
+    /* Initialize GPIO functionality on pin PIO0_18 (pin K3)  */
+    GPIO_PinInit(GPIO, 0U, 18U, &gpio0_pinK3_config);
+
+    gpio_pin_config_t gpio1_pinJ11_config = {
+        .pinDirection = kGPIO_DigitalOutput,
+        .outputLogic = 0U
+    };
+    /* Initialize GPIO functionality on pin PIO1_12 (pin J11)  */
+    GPIO_PinInit(GPIO, 1U, 12U, &gpio1_pinJ11_config);
+
+    gpio_pin_config_t gpio1_pinF12_config = {
+        .pinDirection = kGPIO_DigitalOutput,
+        .outputLogic = 0U
+    };
+    /* Initialize GPIO functionality on pin PIO1_14 (pin F12)  */
+    GPIO_PinInit(GPIO, 1U, 14U, &gpio1_pinF12_config);
+
+    gpio_pin_config_t gpio1_pinE13_config = {
+        .pinDirection = kGPIO_DigitalOutput,
+        .outputLogic = 0U
+    };
+    /* Initialize GPIO functionality on pin PIO1_15 (pin E13)  */
+    GPIO_PinInit(GPIO, 1U, 15U, &gpio1_pinE13_config);
+
+    gpio_pin_config_t gpio1_pinD13_config = {
+        .pinDirection = kGPIO_DigitalOutput,
+        .outputLogic = 0U
+    };
+    /* Initialize GPIO functionality on pin PIO1_16 (pin D13)  */
+    GPIO_PinInit(GPIO, 1U, 16U, &gpio1_pinD13_config);
+
+    gpio_pin_config_t gpio1_pinD14_config = {
+        .pinDirection = kGPIO_DigitalOutput,
+        .outputLogic = 0U
+    };
+    /* Initialize GPIO functionality on pin PIO1_17 (pin D14)  */
+    GPIO_PinInit(GPIO, 1U, 17U, &gpio1_pinD14_config);
     /* Initialize GPIO16 functionality on pin GPIO_16 (pin J3) */
     IO_MUX_SetPinMux(IO_MUX_GPIO16);
     /* Initialize GPIO17 functionality on pin GPIO_17 (pin H2) */
@@ -65,6 +127,8 @@ void BOARD_InitPins(void)
     IO_MUX_SetPinMux(IO_MUX_GPIO18);
     /* Initialize GPIO44 functionality on pin GPIO_44 (pin J11) */
     IO_MUX_SetPinMux(IO_MUX_GPIO44);
+    /* Initialize GPIO46 functionality on pin GPIO_46 (pin F12) */
+    IO_MUX_SetPinMux(IO_MUX_GPIO46);
     /* Initialize GPIO47 functionality on pin GPIO_47 (pin E13) */
     IO_MUX_SetPinMux(IO_MUX_GPIO47);
     /* Initialize GPIO48 functionality on pin GPIO_48 (pin D13) */
