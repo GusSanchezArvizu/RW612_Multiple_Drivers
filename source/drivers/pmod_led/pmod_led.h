@@ -1,9 +1,10 @@
 /*
  * pmod_led.h
  *
- *  Created on: 14 nov. 2026
- *      Author: gusta
- * 		@brief Driver agnóstico al hardware para el módulo SiPEED PMOD-LEDx8.
+ *  Created on: 20 nov. 2026
+ *  Author: Gustavo Sanchez
+ *  GitHub: GusSanchezArvizu
+ *
  */
 
 #ifndef PMOD_LED_H
