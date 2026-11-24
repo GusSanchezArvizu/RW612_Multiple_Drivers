@@ -1,13 +1,11 @@
 /*
  * main.c
  *
- *  Created on: 14 nov. 2026
- *      Author: gusta
+ *  Created on: 20 nov. 2026
+ *  Author: Gustavo Sanchez
+ *  GitHub: GusSanchezArvizu
  */
-/**
- * @file    main.c
- * @brief   Application entry point.
- */
+
 #include <stdio.h>
 #include "board.h"
 #include "peripherals.h"
@@ -33,14 +31,12 @@ int main(void) {
     BOARD_InitDebugConsole();
 #endif
 
-    // 1. Empaquetamos la función física de la RW612 en el contrato que pide el driver
+    // Empaquetamos la función física de la RW612 en el contrato que pide el driver
     pmod_led_hal_t led_hal = {
         .gpio_write = HAL_GPIO_WritePmodLed
     };
     pmod_led_t board_leds;
-    // 2. Le entregamos el HAL al driver (Inyección de Dependencias)
     PMOD_LED_Init(&board_leds, &led_hal, false);
-    // 3. La aplicación usa el driver sin preocuparse por pines ni registros
     PMOD_LED_WriteMask(&board_leds, 0b10101010);
 
     PRINTF("Hello World\r\n");
